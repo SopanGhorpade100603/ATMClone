@@ -3,7 +3,7 @@ package com.atm.clone.project;
 public class ExitSystem {
 	public static void exitSystem(){
 		try {
-			System.out.print(".");
+			System.err.print(".");
 			Thread t = new Thread(()->{
 				  for (int i = 1; i <= 3; i++) {
 	                    try {
@@ -11,10 +11,11 @@ public class ExitSystem {
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						} 
-	                    System.out.print("."); 
+	                    System.err.print("."); 
 	                }
 			});
-			t.run();
+			t.start();
+			t.join();
 			System.err.println("Exit");
 		}
 		catch(Exception e) {
